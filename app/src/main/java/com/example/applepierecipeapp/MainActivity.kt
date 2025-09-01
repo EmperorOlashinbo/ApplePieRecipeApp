@@ -64,5 +64,14 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        // Ingredients image
+        Image(
+            painter = painterResource(id = R.drawable.ingredients),
+            contentDescription = "Apple pie ingredients",
+            modifier = Modifier
+                .size(150.dp)
+                .padding(bottom = 16.dp)
+        )
     }
+
+}
