@@ -72,6 +72,14 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
                 .size(150.dp)
                 .padding(bottom = 16.dp)
         )
+        // Title with larger text size and color
+        Text(
+            text = recipeTitle,
+            fontSize = 24.sp,
+            color = Color(0xFF8B4513),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
     }
 
 }
