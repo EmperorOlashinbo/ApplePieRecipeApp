@@ -52,3 +52,17 @@ private val recipeContent = """
     4. Bake for 40-50 minutes until golden brown.
 """.trimIndent()
 
+@Composable
+fun RecipeScreen(modifier: Modifier = Modifier) {
+    var isVisible by remember { mutableStateOf(true) } // State for toggle
+
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color(0xFFF5E8C7))
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+    }
