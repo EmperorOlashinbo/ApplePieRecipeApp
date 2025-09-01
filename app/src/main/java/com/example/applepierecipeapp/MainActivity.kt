@@ -90,6 +90,14 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
         }
+        // Image of finished pie with toggle and different styling
+        Image(
+            painter = painterResource(id = R.drawable.finished_pie),
+            contentDescription = "Finished apple pie",
+            modifier = Modifier
+                .size(150.dp)
+                .padding(bottom = 16.dp)
+        )
     }
 
 }
