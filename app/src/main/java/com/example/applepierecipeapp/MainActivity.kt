@@ -98,6 +98,19 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
                 .size(150.dp)
                 .padding(bottom = 16.dp)
         )
+        // Toggle button
+        Button(
+            onClick = { isVisible = !isVisible },
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Text(if (isVisible) "Hide Recipe" else "Show Recipe")
+        }
     }
-
+}
+@Preview(showBackground = true)
+@Composable
+fun RecipeScreenPreview() {
+    ApplePieRecipeAppTheme {
+        RecipeScreen()
+    }
 }
