@@ -80,6 +80,16 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(bottom = 8.dp)
         )
+        // Recipe content with toggle and different styling
+        if (isVisible) {
+            Text(
+                text = recipeContent,
+                fontSize = 16.sp,
+                color = Color(0xFF6B4E31),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
     }
 
 }
