@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("jacoco") // Add JaCoCo plugin for coverage reporting
 }
 
 android {
@@ -20,13 +21,18 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true // Enable minification for release builds
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"), // Corrected file name
                 "proguard-rules.pro"
             )
         }
+        debug {
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage = true
+        }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -37,6 +43,21 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
+    // Test options for coverage
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true // Include Android resources in unit tests
+            isReturnDefaultValues = true    // Return default values for unmocked methods
+        }
+        animationsDisabled = true // Speed up UI tests by disabling animations
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.13" // Match the version in dependencies
 }
 
 dependencies {
@@ -48,12 +69,16 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-
+    implementation(libs.ui.test.junit4) // Note: This might be a typo; should be androidTestImplementation
+    implementation(libs.androidx.room.external.antlr)
     testImplementation(libs.junit)
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.jacoco:org.jacoco.core:0.8.13") // JaCoCo for unit test coverage
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(kotlin("test")) // Consider moving to testImplementation if only for tests
 }

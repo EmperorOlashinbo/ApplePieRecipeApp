@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.applepierecipeapp.ui.theme.ApplePieRecipeAppTheme
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag // Import for testTag
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +35,8 @@ class MainActivity : ComponentActivity() {
 }
 
 // RecipeScreen composable recipe data
-private val recipeTitle = "Classic Apple Pie Recipe"
-private val recipeContent = """
+internal val recipeTitle = "Classic Apple Pie Recipe"
+internal val recipeContent = """
     **Ingredients:**
     - 6 cups thinly sliced apples (e.g., Granny Smith)
     - 3/4 cup white sugar
@@ -87,7 +88,9 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
                 fontSize = 16.sp,
                 color = Color(0xFF6B4E31),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier
+                    .padding(bottom = 16.dp)
+                    .testTag("recipeText") // Test tag for the recipe content
             )
         }
         // Image of finished pie with toggle and different styling
@@ -101,12 +104,15 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
         // Toggle button
         Button(
             onClick = { isVisible = !isVisible },
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .testTag("toggleButton") // Test tag for the toggle button
         ) {
             Text(if (isVisible) "Hide Recipe" else "Show Recipe")
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun RecipeScreenPreview() {
