@@ -69,7 +69,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.ui.test.junit4) // Note: This might be a typo; should be androidTestImplementation
+    implementation(libs.ui.test.junit4)
     implementation(libs.androidx.room.external.antlr)
     testImplementation(libs.junit)
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
@@ -80,5 +80,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(kotlin("test")) // Consider moving to testImplementation if only for tests
+    implementation(kotlin("test"))
 }
