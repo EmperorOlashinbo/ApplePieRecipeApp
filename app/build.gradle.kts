@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("jacoco") // Add JaCoCo plugin for coverage reporting
+    id("jacoco")
 }
 
 android {
@@ -23,7 +23,7 @@ android {
         release {
             isMinifyEnabled = true // Enable minification for release builds
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), // Corrected file name
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -57,7 +57,7 @@ android {
 }
 
 jacoco {
-    toolVersion = "0.8.13" // Match the version in dependencies
+    toolVersion = "0.8.13" // Set the version of JaCoCo to use
 }
 
 dependencies {

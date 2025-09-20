@@ -1,10 +1,10 @@
 package com.example.applepierecipeapp
 
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertTextContains
 import com.example.applepierecipeapp.ui.theme.ApplePieRecipeAppTheme
 import org.junit.Rule
 import org.junit.Test
@@ -38,6 +38,27 @@ class RecipeScreenTest {
             .performClick()
         composeTestRule.onNodeWithTag("recipeText")
             .assertIsDisplayed()
-            .assertTextContains("Ingredients")
+            .assertTextContains("Instructions")
+    }
+
+    @Test
+    fun testInitialState() {
+        composeTestRule.setContent {
+            ApplePieRecipeAppTheme {
+                RecipeScreen()
+            }
+        }
+        composeTestRule.onNodeWithTag("recipeText")
+            .assertIsDisplayed()
+    }
+    @Test
+    fun testButtonExists() {
+        composeTestRule.setContent {
+            ApplePieRecipeAppTheme {
+                RecipeScreen()
+            }
+        }
+        composeTestRule.onNodeWithTag("toggleButton")
+            .assertIsDisplayed()
     }
 }
